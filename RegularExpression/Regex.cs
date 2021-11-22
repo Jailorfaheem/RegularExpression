@@ -2,67 +2,169 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
-namespace RegularExpression00
+namespace UserRegistrationException
 {
-    public class RegularExpression
+    public class UserException
     {
-        //This method for matching pattern of first name
-        public static void FirstNameValid(string name)
+        //declaring instance variable
+        public string message;
+
+        public UserException(string message)
         {
-            //Regular expression for first letter is capital and maximum charactor is 3
-            string firstname = "^[A-Z]{1}[a-zA-Z]{2}$";
-            Regex regex = new Regex(firstname);
-            //if condition for matching pattern
-            //if condition is true then if block will execute
-            if (regex.IsMatch(name))
+            this.message = message;
+        }
+        /// <summary>
+        /// validate fist name using lambda function
+        /// </summary>
+        /// <returns></returns>
+        public string ValidFirstName()
+        {
+            string firstNamePattern = "^[A-Z]{1}[a-zA-Z]{2}$";
+            bool testFirstName(string firstName) => (Regex.IsMatch(firstName, firstNamePattern));
+            bool result = testFirstName(message);
+            //Regex regex = new Regex(firstname);
+            try
             {
-                Console.WriteLine(name + " is valid name");
+                //if condition for matching pattern
+                //if condition is true then if block will execute
+                if (result)
+                {
+                    return "valid";
+                }
+                //else condition for if condition is false then else block will execute
+                else
+                {
+                    return "invalid";
+                }
             }
-            //else condition for if condition is false then else block will execute
-            else
+            catch (ArgumentNullException ex)
             {
-                Console.WriteLine(name + " is invalid first name. Please start with capital letter and only take maximum 3 charactors");
+                throw new CustomException(CustomException.ExceptionType.Argument_Null_Exception, "invalid");
+            }
+
+        }
+        /// <summary>
+        /// validate last name using lambda function
+        /// </summary>
+        /// <returns></returns>
+        public string ValidLastName()
+        {
+            string larstNamePattern = "^[A-Z]{1}[a-zA-Z]{2}$";
+            bool testLastName(string larstName) => (Regex.IsMatch(larstName, larstNamePattern));
+            bool result = testLastName(message);
+            try
+            {
+                //if condition for matching pattern
+                //if condition is true then if block will execute
+                if (result)
+                {
+                    return "valid";
+                }
+                //else condition for if condition is false then else block will execute
+                else
+                {
+                    return "invalid";
+                }
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw new CustomException(CustomException.ExceptionType.Argument_Null_Exception, "invalid");
+            }
+
+        }
+        /// <summary>
+        /// validate email id using lambda function
+        /// </summary>
+        /// <returns></returns>
+        public string EmailIdValid()
+        {
+            string emailIdPattern = "^[a-z]{3}[.][a-z]*[@]{1}[bl]{2}[.]{1}[co]{2}[.]{1}[a-z]*$";
+            bool testEmailId(string emailId) => (Regex.IsMatch(emailId, emailIdPattern));
+            bool result = testEmailId(message);
+            try
+            {
+                //if condition for matching pattern
+                //if condition is true then if block will execute
+                if (result)
+                {
+                    return "valid";
+                }
+                //else condition for if condition is false then else block will execute
+                else
+                {
+                    return "invalid";
+                }
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw new CustomException(CustomException.ExceptionType.Argument_Null_Exception, "invalid");
             }
         }
-        //This method for validate last name
-        public static void LastNameNameValid(string name)
+        /// <summary>
+        /// validate mobile number using lambda function
+        /// </summary>
+        /// <returns></returns>
+        public string MobileNumValid()
         {
-            //Regular expression for first letter is capital and maximum charactor is 3
-            string firstname = "^[A-Z]{1}[a-zA-Z]{2}$";
-            Regex regex = new Regex(firstname);
-            //if condition for matching pattern
-            if (regex.IsMatch(name))
+            //Regular expression of mobile number
+            string numberPattern = "^[0-9]{1,2}[ ]{1}[0-9]{10}$";
+            bool testMobNum(string mobNum) => (Regex.IsMatch(mobNum, numberPattern));
+            bool result = testMobNum(message);
+            try
             {
-                Console.WriteLine(name + " is valid name");
+                //if condition for matching pattern
+                //if condition is true then if block will execute
+                if (result)
+                {
+                    return "valid";
+                }
+                //else condition for if condition is false then else block will execute
+                else
+                {
+                    return "invalid";
+                }
             }
-            //else condition for if condition is false then else block will execute
-            else
+            catch (ArgumentNullException ex)
             {
-                Console.WriteLine(name + " is invalid last name. Please start with capital letter and take maximums 3 charactors");
+                throw new CustomException(CustomException.ExceptionType.Argument_Null_Exception, "invalid");
             }
         }
-        //This method for validation of email id
-        public static void EmailValid()
+        /// <summary>
+        /// validate password using lambda function
+        /// </summary>
+        /// <returns></returns>
+        public string ValidPassword()
         {
-            Console.Write("Email id : ");
-            string name = Console.ReadLine();
-
-            string emailid = "^[a-z]{3}[.][a-z]*[@]{1}[bl]{2}[.]{1}[co]{2}[.]{1}[a-z]*$";
-            Regex regex = new Regex(emailid);
-
-            if (regex.IsMatch(name))
+            //Regular expression of mobile number
+            //Regular expression of password
+            //Rule 1 : minimum 8 charactors
+            //Rule 2 : atleast 1 uppercase
+            //Rule 3 : atleast 1 numeric number
+            //Rule 4 : ataleast 1 special charactor
+            string passwordPattern = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%&*])[a-zA-Z0-9!@#$%&*]{8,}$";
+            bool testPassword(string password) => (Regex.IsMatch(password, passwordPattern));
+            bool result = testPassword(message);
+            try
             {
-                Console.WriteLine("Email Id is valid");
+                //if condition for matching pattern
+                //if condition is true then if block will execute
+                if (result)
+                {
+                    return "valid";
+                }
+                //else condition for if condition is false then else block will execute
+                else
+                {
+                    return "invalid";
+                }
             }
-            else
+            catch (ArgumentNullException ex)
             {
-                Console.WriteLine("Email Is Invalid,Please Enter Valid email Id");
+                throw new CustomException(CustomException.ExceptionType.Argument_Null_Exception, "invalid");
             }
-
         }
     }
-
 }
