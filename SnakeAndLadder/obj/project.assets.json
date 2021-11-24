@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dc\\source\\repos\\RegularExpression\\RegularExpression\\RegularExpression.csproj",
-      "projectName": "RegularExpression",
-      "projectPath": "C:\\Users\\dc\\source\\repos\\RegularExpression\\RegularExpression\\RegularExpression.csproj",
+      "projectUniqueName": "C:\\Users\\dc\\source\\repos\\SnakeAndLadder\\SnakeAndLadder\\SnakeAndLadder.csproj",
+      "projectName": "SnakeAndLadder",
+      "projectPath": "C:\\Users\\dc\\source\\repos\\SnakeAndLadder\\SnakeAndLadder\\SnakeAndLadder.csproj",
       "packagesPath": "C:\\Users\\dc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dc\\source\\repos\\RegularExpression\\RegularExpression\\obj\\",
+      "outputPath": "C:\\Users\\dc\\source\\repos\\SnakeAndLadder\\SnakeAndLadder\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dc\\AppData\\Roaming\\NuGet\\NuGet.Config",
